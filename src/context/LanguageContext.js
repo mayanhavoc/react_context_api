@@ -19,3 +19,11 @@ export class LanguageProvider extends Component {
         );
     }
 }
+
+// what we're doing is creating a high order component that takes in a different component and some props as arguments and returns the same component with all the original props but also injects in a new prop called languageContext coming from LanguageContextConsumer, takes the value from LanguageContextConsumer and passes it as a prop. 
+
+export const withLanguageContext = Component => props => (
+    <LanguageContext.Consumer>
+        {value => <Component languageContext={value} {...props} />}
+    </LanguageContext.Consumer>
+) 
