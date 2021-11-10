@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ThemeContext } from './context/ThemeContext';
 import { LanguageContext } from './context/LanguageContext';
 import AppBar from '@material-ui/core/AppBar';
