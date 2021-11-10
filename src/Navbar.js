@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,11 +12,13 @@ import styles from './styles/NavBarStyles';
 
 
 class Navbar extends Component {
+    static contextType = ThemeContext;
     render() {
+        const { isDarkMode, toggleTheme } = this.context;
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-                <AppBar title="Navbar" position="static" color="primary">
+                <AppBar title="Navbar" position="static" color={isDarkMode ? "default" : "primary"}>
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <span>🇲🇽</span>
@@ -27,7 +30,7 @@ class Navbar extends Component {
                             noWrap>
                                 App title
                         </Typography>
-                        <Switch />
+                        <Switch onChange={toggleTheme}/>
                         <div className={classes.grow} />
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
